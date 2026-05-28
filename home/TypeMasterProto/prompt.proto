@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service PromptService {
+  rpc GetPrompt (LevelRequest) returns (PromptResponse);
+}
+
+message LevelRequest {
+  int32 level = 1; // 1 = easy, 2 = medium, 3 = hard
+}
+
+message PromptResponse {
+  string prompt = 1;
+}

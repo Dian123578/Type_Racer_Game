@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+service ScoringService {
+  rpc SubmitResult (TypingResult) returns (ScoreResponse);
+  rpc GetLeaderboard (Empty) returns (Leaderboard);
+}
+
+message TypingResult {
+  string name = 1;
+  int32 level = 2;
+  string prompt = 3;
+  string typed_text = 4;
+  float duration = 5; //time in seconds
+}
+
+message ScoreResponse {
+  float accuracy = 1;
+  float speed = 2;
+  float score = 3;
+}
+
+message LeaderboardEntry {
+  string name = 1;
+  int32 level = 2;
+  float accuracy = 3;
+  float speed = 4;
+  float score = 5;
+}
+
+message Leaderboard {
+  repeated LeaderboardEntry entries = 1;
+}
+
+message Empty {}
